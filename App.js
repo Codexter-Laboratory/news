@@ -14,6 +14,8 @@ import {History} from './src/screens/History';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
 import {Sources} from './src/screens/Sources';
 import {SourceHeadlines} from './src/screens/SourceHeadlines';
 
@@ -58,73 +60,78 @@ const HomeStack = () => {
 };
 
 const TabNavigator = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+
 const App = () => {
   return (
     <NavigationContainer>
-      <TabNavigator.Navigator
+      <Drawer.Navigator
         backBehavior="none"
+        initialRouteName="HomeScreen"
         screenOptions={({route}) => ({
-          tabBarStyle: {borderTopWidth: 0, height: 50, opacity: 1},
-          tabBarActiveTintColor: '#2446ff',
-          tabBarInactiveTintColor: 'black',
-          tabBarIcon: ({focused, color, size}) => {
-            return (
-              <View style={styles.imageContainer}>
-                {route.name === 'Home' ? (
-                  focused ? (
-                    <Image style={styles.image} source={activeHome} />
-                  ) : (
-                    <Image style={styles.image} source={homeIcon} />
-                  )
-                ) : route.name === 'Sources' ? (
-                  focused ? (
-                    <Image style={styles.image} source={activeSources} />
-                  ) : (
-                    <Image style={styles.image} source={sourceIcon} />
-                  )
-                ) : focused ? (
-                  <Image style={styles.image} source={activeHistory} />
-                ) : (
-                  <Image style={styles.image} source={history} />
-                )}
-              </View>
-            );
-          },
+          drawerStyle: {opacity: 1, backgroundColor: '#0E0E0E', width: '60%'},
+          drawerActiveTintColor: '#2446ff',
+          drawerInactiveTintColor: 'white',
+          drawerContentContainerStyle: {marginTop: 20},
+          drawerLabelStyle: {alignSelf: 'center'},
         })}>
-        <TabNavigator.Screen
+        <Drawer.Screen
           name="Home"
           component={HomeStack}
           options={{
             headerShown: false,
-            tabBarActiveTintColor: '#2446ff',
-            tabBarInactiveTintColor: 'black',
-            tabBarLabel: ({focused, navigation}) => (
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.reset({
-                    index: 0,
-                    routes: [{name: 'Home'}],
-                  });
-                }}>
-                <Text
-                  style={{color: focused ? '#2446ff' : 'black', fontSize: 10}}>
-                  Home
-                </Text>
-              </TouchableOpacity>
-            ),
+            drawerActiveTintColor: '#2446ff',
+            drawerInactiveTintColor: 'white',
+            // drawerIcon: ({focused, color, size}) => {
+            //   return (
+            //     <View style={styles.imageContainer}>
+            //       {focused ? (
+            //         <Image style={styles.image} source={activeHome} />
+            //       ) : (
+            //         <Image style={styles.image} source={homeIcon} />
+            //       )}
+            //     </View>
+            //   );
+            // },
           }}
         />
-        <TabNavigator.Screen
+        <Drawer.Screen
           name="Sources"
           component={Sources}
-          options={{headerShown: false}}
+          options={{
+            headerShown: false,
+            // drawerIcon: ({focused, color, size}) => {
+            //   return (
+            //     <View style={styles.imageContainer}>
+            //       {focused ? (
+            //         <Image style={styles.image} source={activeSources} />
+            //       ) : (
+            //         <Image style={styles.image} source={sourceIcon} />
+            //       )}
+            //     </View>
+            //   );
+            // },
+          }}
         />
-        <TabNavigator.Screen
+        <Drawer.Screen
           name="History"
           component={History}
-          options={{headerShown: false}}
+          options={{
+            headerShown: false,
+            // drawerIcon: ({focused, color, size}) => {
+            //   return (
+            //     <View style={styles.imageContainer}>
+            //       {focused ? (
+            //         <Image style={styles.image} source={activeHistory} />
+            //       ) : (
+            //         <Image style={styles.image} source={history} />
+            //       )}
+            //     </View>
+            //   );
+            // },
+          }}
         />
-      </TabNavigator.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
@@ -132,13 +139,13 @@ export default App;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    width: '100%',
-    height: '90%',
+    width: '50%',
+    height: '20%',
     paddingTop: 5,
   },
   image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
+    width: '40%',
+    height: '100 %',
+    resizeMode: 'stretch',
   },
 });
