@@ -122,16 +122,14 @@ export const Home = ({navigation, route}) => {
 
   return (
     <View>
-      <View style={styles.mainContainer}>
-        <Text style={styles.title}>Today's Picks</Text>
-        <Tags
-          onPressUae={onPressUae}
-          onPressEgy={onPressEgy}
-          onPressAll={onPressALl}
-          activeUae={active.uae}
-          activeEgy={active.egy}
-        />
-      </View>
+      {/*<Text style={styles.title}>Today's Picks</Text>*/}
+      <Tags
+        onPressUae={onPressUae}
+        onPressEgy={onPressEgy}
+        onPressAll={onPressALl}
+        activeUae={active.uae}
+        activeEgy={active.egy}
+      />
       {renderNews()}
     </View>
   );
@@ -140,7 +138,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: '#1B1B1B',
     width: '100%',
-    height: '20%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -149,33 +146,5 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#f3f3f3',
     marginBottom: '5%',
-  },
-  buttonContainer: {
-    width: '100%',
-    height: '25%',
-    backgroundColor: '#313236',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    backgroundColor: '#1B1B1B',
-    borderRadius: 20,
-    width: '20%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 5,
-    marginLeft: 10,
-  },
-  activeButton: {
-    backgroundColor: 'white',
-    color: 'black',
-    borderRadius: 20,
-    width: '20%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 5,
-    marginLeft: 10,
   },
 });

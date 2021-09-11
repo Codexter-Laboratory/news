@@ -72,9 +72,6 @@ export const History = ({navigation}) => {
   );
   return (
     <View style={{backgroundColor: '#1B1B1B', height: '100%'}}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>History</Text>
-      </View>
       <View style={styles.grayView} />
       {renderArticles()}
     </View>

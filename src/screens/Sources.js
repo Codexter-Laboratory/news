@@ -13,7 +13,7 @@ export const Sources = ({navigation}) => {
     const urlUAE =
       'https://newsapi.org/v2/top-headlines?country=ae&apiKey=257f1c291e85414ba2e7deb64b72d8a7';
     const urlEgypt =
-      'https://newsapi.org/v2/top-headlines?country=eg&apiKey=257f1c291e85414ba2e7deb64b72d8a7\n';
+      'https://newsapi.org/v2/top-headlines?country=eg&apiKey=257f1c291e85414ba2e7deb64b72d8a7';
     let responseUae = await fetch(urlUAE);
     let responseEgy = await fetch(urlEgypt);
     let resultUae = await responseUae.json();
@@ -62,16 +62,13 @@ export const Sources = ({navigation}) => {
 
   return (
     <View>
-      <View style={styles.mainContainer}>
-        <Text style={styles.title}>Sources</Text>
-        <Tags
-          onPressAll={onPressAll}
-          onPressUae={onPressUae}
-          onPressEgy={onPressEgy}
-          activeUae={active.uae}
-          activeEgy={active.egy}
-        />
-      </View>
+      <Tags
+        onPressAll={onPressAll}
+        onPressUae={onPressUae}
+        onPressEgy={onPressEgy}
+        activeUae={active.uae}
+        activeEgy={active.egy}
+      />
       <FlatList
         data={active.uae ? data.uae : active.egy ? data.egy : data.all}
         initialNumToRender={10}

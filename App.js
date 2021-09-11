@@ -18,6 +18,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import {Sources} from './src/screens/Sources';
 import {SourceHeadlines} from './src/screens/SourceHeadlines';
+import {Header} from './src/components/Header';
 
 const HomeStackNav = createNativeStackNavigator();
 const homeIcon = require('./assets/images/home.png');
@@ -79,7 +80,10 @@ const App = () => {
           name="Home"
           component={HomeStack}
           options={{
-            headerShown: false,
+            headerShown: true,
+            header: () => {
+              return <Header title={"Today's Picks"} />;
+            },
             drawerActiveTintColor: '#2446ff',
             drawerInactiveTintColor: 'white',
             // drawerIcon: ({focused, color, size}) => {
@@ -99,7 +103,10 @@ const App = () => {
           name="Sources"
           component={Sources}
           options={{
-            headerShown: false,
+            headerShown: true,
+            header: () => {
+              return <Header title={'Sources'} />;
+            },
             // drawerIcon: ({focused, color, size}) => {
             //   return (
             //     <View style={styles.imageContainer}>
@@ -117,7 +124,10 @@ const App = () => {
           name="History"
           component={History}
           options={{
-            headerShown: false,
+            headerShown: true,
+            header: () => {
+              return <Header title={'History'} />;
+            },
             // drawerIcon: ({focused, color, size}) => {
             //   return (
             //     <View style={styles.imageContainer}>

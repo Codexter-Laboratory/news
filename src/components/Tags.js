@@ -44,7 +44,7 @@ export const Tags = props => {
 const styles = StyleSheet.create({
   buttonContainer: {
     width: '100%',
-    height: '25%',
+    height: '6%',
     backgroundColor: '#313236',
     display: 'flex',
     flexDirection: 'row',
